@@ -1,0 +1,36 @@
+{
+  "name": "<%= name %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "main": "scripts/main-scripts.js",
+  "bin": "lib/external-script.js",
+  "scripts": {
+    "start": "coffee --nodejs --debug $(npm bin)/hubot -a shell -n bot",
+    "test": "istanbul cover _mocha",
+    "health": "npm test && npm run lint && npm outdated",
+    "lint": "eslint scripts/*",
+    "coveralls": "istanbul-coveralls",
+    "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info"
+  },
+  "keywords": <%- keywords %>,
+  "author": "<%= author %>",
+  "license": "<%= license %>",<% if (url !== '') { %>
+  "repository": {
+    "type": "git",
+    "url": "<%= repo %>"
+  },
+  "bugs": {
+    "url": "https://<%= url %>/issues"
+  },
+  "homepage": "https://<%= url %>#readme",<% } %>
+  "devDependencies": {
+    "codeclimate-test-reporter": "0.3.3",
+    "coffee-script": "1.10.0",
+    "eslint": "3.2.0",
+    "hubot": "2.19.0",
+    "istanbul": "0.4.4",
+    "istanbul-coveralls": "1.0.3",
+    "mocha": "2.5.3",
+    "power-assert": "1.4.1"
+  }
+}
